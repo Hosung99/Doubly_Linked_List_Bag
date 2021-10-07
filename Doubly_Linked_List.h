@@ -5,41 +5,41 @@ using namespace std;
 
 typedef size_t size_type;
 
-class Node { //node¶ó´Â °ÍÀ» Á¤ÀÇÇÒ Å¬·¡½ºÀÌ´Ù.
+class Node { //nodeë¼ëŠ” ê²ƒì„ ì •ì˜í•  í´ë˜ìŠ¤ì´ë‹¤.
 public:
-	int data;  //data°¡ µé¾î°¡´Â º¯¼öÀÌ´Ù.
-	Node* next_ptr; //´ÙÀ½ ³ëµå¸¦ °¡¸®Å³ Æ÷ÀÎÅÍÀÌ´Ù.
-	Node* prev_ptr; //ÀÌÀü ³ëµå¸¦ °¡¸®Å³ Æ÷ÀÎÅÍÀÌ´Ù.
-	Node() { //ºó ³ëµå »ı¼º¿ëÀÌ´Ù.
+	int data;  //dataê°€ ë“¤ì–´ê°€ëŠ” ë³€ìˆ˜ì´ë‹¤.
+	Node* next_ptr; //ë‹¤ìŒ ë…¸ë“œë¥¼ ê°€ë¦¬í‚¬ í¬ì¸í„°ì´ë‹¤.
+	Node* prev_ptr; //ì´ì „ ë…¸ë“œë¥¼ ê°€ë¦¬í‚¬ í¬ì¸í„°ì´ë‹¤.
+	Node() { //ë¹ˆ ë…¸ë“œ ìƒì„±ìš©ì´ë‹¤.
 		data = 0;
-		next_ptr = NULL;  //Æ÷ÀÎÅÍ´Â NULL·Î ÃÊ±âÈ­½ÃÄÑÁØ´Ù.
-		prev_ptr = NULL; //ÀÌÀü Æ÷ÀÎÅÍ ¶ÇÇÑ NULL·Î ÃÊ±âÈ­½ÃÅ²´Ù.
+		next_ptr = NULL;  //í¬ì¸í„°ëŠ” NULLë¡œ ì´ˆê¸°í™”ì‹œì¼œì¤€ë‹¤.
+		prev_ptr = NULL; //ì´ì „ í¬ì¸í„° ë˜í•œ NULLë¡œ ì´ˆê¸°í™”ì‹œí‚¨ë‹¤.
 	};
 	Node(int data) {
-		this->data = data;  //³ëµå¿¡ data¸Å°³º¯¼ö°¡ µé¾î¿Â´Ù¸é ÀÌ »ı¼ºÀÚ¸¦ ½ÇÇà½ÃÄÑ µ¥ÀÌÅÍ¸¦ ÀúÀåÇÑ´Ù.
-		next_ptr = NULL;  //Æ÷ÀÎÅÍ´Â NULL·Î ÃÊ±âÈ­½ÃÄÑÁØ´Ù.
-		prev_ptr = NULL; //ÀÌÀü Æ÷ÀÎÅÍ ¶ÇÇÑ NULL·Î ÃÊ±âÈ­½ÃÅ²´Ù.
+		this->data = data;  //ë…¸ë“œì— dataë§¤ê°œë³€ìˆ˜ê°€ ë“¤ì–´ì˜¨ë‹¤ë©´ ì´ ìƒì„±ìë¥¼ ì‹¤í–‰ì‹œì¼œ ë°ì´í„°ë¥¼ ì €ì¥í•œë‹¤.
+		next_ptr = NULL;  //í¬ì¸í„°ëŠ” NULLë¡œ ì´ˆê¸°í™”ì‹œì¼œì¤€ë‹¤.
+		prev_ptr = NULL; //ì´ì „ í¬ì¸í„° ë˜í•œ NULLë¡œ ì´ˆê¸°í™”ì‹œí‚¨ë‹¤.
 	};
-	Node* link_next() { return next_ptr; }; //´ÙÀ½ Æ÷ÀÎÅÍ·ÎÀÇ ÀÌµ¿¸¦ ÀÇ¹ÌÇÑ´Ù.
-	Node* link_prev() { return prev_ptr; }; //ÀÌÀü Æ÷ÀÎÅÍ·ÎÀÇ ÀÌµ¿¸¦ ÀÇ¹ÌÇÑ´Ù.
+	Node* link_next() { return next_ptr; }; //ë‹¤ìŒ í¬ì¸í„°ë¡œì˜ ì´ë™ë¥¼ ì˜ë¯¸í•œë‹¤.
+	Node* link_prev() { return prev_ptr; }; //ì´ì „ í¬ì¸í„°ë¡œì˜ ì´ë™ë¥¼ ì˜ë¯¸í•œë‹¤.
 	int data_return() { return data; };
 };
 
-Node* head_ptr; //Ã¹ ³ëµå¸¦ °¡¸®Å³ ÇìµåÆ÷ÀÎÅÍÀÌ´Ù.
-Node* tail_ptr; //¸¶Áö¸· ³ëµå¸¦ °¡¸®Å³ Å×ÀÏÆ÷ÀÎÅÍÀÌ´Ù.
-int index;  //³ëµå°¡ ¸î°³ÀÎÁö ¼¿ º¯¼öÀÌ´Ù
+Node* head_ptr; //ì²« ë…¸ë“œë¥¼ ê°€ë¦¬í‚¬ í—¤ë“œí¬ì¸í„°ì´ë‹¤.
+Node* tail_ptr; //ë§ˆì§€ë§‰ ë…¸ë“œë¥¼ ê°€ë¦¬í‚¬ í…Œì¼í¬ì¸í„°ì´ë‹¤.
+int index;  //ë…¸ë“œê°€ ëª‡ê°œì¸ì§€ ì…€ ë³€ìˆ˜ì´ë‹¤
 
 class Doubly_Linked_List {
 public:
 
-	Doubly_Linked_List() { //±âº»»ı¼ºÀÚ.
-		head_ptr = new Node();  // Çì´õÆ÷ÀÎÅÍ¿¡ »õ·Î¿î ³ëµå¸¦ ÇÒ´çÇÑ´Ù.
-		tail_ptr = head_ptr; //³ëµå°¡ ÇÏ³ªÀÌ¹Ç·Î tailµµ Çìµå¸¦ °¡¸®Å²´Ù.
-		index = 0; // count´Â 0À¸·Î ¸®¼ÂÇØÁØ´Ù.
+	Doubly_Linked_List() { //ê¸°ë³¸ìƒì„±ì.
+		head_ptr = new Node();  // í—¤ë”í¬ì¸í„°ì— ìƒˆë¡œìš´ ë…¸ë“œë¥¼ í• ë‹¹í•œë‹¤.
+		tail_ptr = head_ptr; //ë…¸ë“œê°€ í•˜ë‚˜ì´ë¯€ë¡œ tailë„ í—¤ë“œë¥¼ ê°€ë¦¬í‚¨ë‹¤.
+		index = 0; // countëŠ” 0ìœ¼ë¡œ ë¦¬ì…‹í•´ì¤€ë‹¤.
 	};
-	~Doubly_Linked_List() { //¼Ò¸êÀÚÀÌ´Ù.
-		Node* remove_ptr = head_ptr; //Á¦°ÅÇÏ±â À§ÇØ »õ·Î¿î ³ëµå¸¦ ¸¸µé°í, ÇìµåÆ÷ÀÎÅÍ°¡ °¡¸®Å°´Â°÷À» °¡¸®Å°°ÔÇÑ´Ù.
-		delete head_ptr; //ÇìµåÆ÷ÀÎÅÍ¸¦ ÇØÁ¦½ÃÅ²´Ù.(Á¦°ÅÆ÷ÀÎÅÍ°¡ ±â¸®Å°¹Ç·Î ´õÀÌ»ó ÇÊ¿äx)
+	~Doubly_Linked_List() { //ì†Œë©¸ìì´ë‹¤.
+		Node* remove_ptr = head_ptr; //ì œê±°í•˜ê¸° ìœ„í•´ ìƒˆë¡œìš´ ë…¸ë“œë¥¼ ë§Œë“¤ê³ , í—¤ë“œí¬ì¸í„°ê°€ ê°€ë¦¬í‚¤ëŠ”ê³³ì„ ê°€ë¦¬í‚¤ê²Œí•œë‹¤.
+		delete head_ptr; //í—¤ë“œí¬ì¸í„°ë¥¼ í•´ì œì‹œí‚¨ë‹¤.(ì œê±°í¬ì¸í„°ê°€ ê¸°ë¦¬í‚¤ë¯€ë¡œ ë”ì´ìƒ í•„ìš”x)
 
 		for (int i = 0; i < index; i++) {
 			head_ptr = remove_ptr;
@@ -47,103 +47,116 @@ public:
 			delete head_ptr;
 		}
 	};
-	size_type list_length(Node* head_ptr) { //³ëµå °³¼ö¸¦ ¸®ÅÏÇØÁÖ´Â ÇÔ¼ö.
+	size_type list_length(Node* head_ptr) { //ë…¸ë“œ ê°œìˆ˜ë¥¼ ë¦¬í„´í•´ì£¼ëŠ” í•¨ìˆ˜.
 	};
-	Node* list_search(Node* head_ptr, int& target) { //target°ªÀ» ÁÖ¸é ±×°ª¿¡ ¸Â´Â Æ÷ÀÎÅÍÀÇ ÁÖ¼Ò¸¦ ¸®ÅÏÇØÁØ´Ù.
+	Node* list_search(Node* head_ptr, int& target) { //targetê°’ì„ ì£¼ë©´ ê·¸ê°’ì— ë§ëŠ” í¬ì¸í„°ì˜ ì£¼ì†Œë¥¼ ë¦¬í„´í•´ì¤€ë‹¤.
 	};
-	Node* list_locate(Node* head_ptr, size_type& position) //À§Ä¡¸¦ ¾Ë·ÁÁÖ¸é ÇØ´ç À§Ä¡ÀÇ Æ÷ÀÎÅÍÀÇ ÁÖ¼Ò(ÀÎµ¦½º)¸¦ ¸®ÅÏÇØÁÖ´Â ÇÔ¼ö.
+	Node* list_locate(Node* head_ptr, size_type& position) //ìœ„ì¹˜ë¥¼ ì•Œë ¤ì£¼ë©´ í•´ë‹¹ ìœ„ì¹˜ì˜ í¬ì¸í„°ì˜ ì£¼ì†Œ(ì¸ë±ìŠ¤)ë¥¼ ë¦¬í„´í•´ì£¼ëŠ” í•¨ìˆ˜.
 	{
 	};
-	void list_insert(Node* before, int& insert) { //head°¡ ¾Æ´Ñ ºÎºĞ¿¡ »õ·Î¿î ³ëµå»ğÀÔ ÇÔ¼öÀÌ´Ù. before ³ëµå µÚ¿¡ »ğÀÔÇÒ °ÍÀÌ´Ù. ¸Å°³º¯¼ö·Î ³ëµå¿Í µ¥ÀÌÅÍ°¡ ÇÊ¿äÇÏ´Ù. ¸®ÅÏÇü½ÄÀº ¾ø´Ù.
+	void list_insert(Node* before, int& insert) { //headê°€ ì•„ë‹Œ ë¶€ë¶„ì— ìƒˆë¡œìš´ ë…¸ë“œì‚½ì… í•¨ìˆ˜ì´ë‹¤. before ë…¸ë“œ ë’¤ì— ì‚½ì…í•  ê²ƒì´ë‹¤. ë§¤ê°œë³€ìˆ˜ë¡œ ë…¸ë“œì™€ ë°ì´í„°ê°€ í•„ìš”í•˜ë‹¤. ë¦¬í„´í˜•ì‹ì€ ì—†ë‹¤.
 	};
-	void list_head_insert(Node* head_ptr, int& entry) { //headºÎºĞ¿¡ »õ·Î ³ëµå¸¦ »ğÀÔ ÇØÁÖ´Â ÇÔ¼öÀÌ´Ù.
+	void list_head_insert(Node* head_ptr, int& entry) { //headë¶€ë¶„ì— ìƒˆë¡œ ë…¸ë“œë¥¼ ì‚½ì… í•´ì£¼ëŠ” í•¨ìˆ˜ì´ë‹¤.
 	};
-	void list_head_remove(Node*& head_ptr) { //Ã¹¹øÂ° ³ëµå¸¦ Áö¿öÁÖ´Â ÇÔ¼ö.
+	void list_head_remove(Node*& head_ptr) { //ì²«ë²ˆì§¸ ë…¸ë“œë¥¼ ì§€ì›Œì£¼ëŠ” í•¨ìˆ˜.
 	};
-	void list_remove(Node* previous_ptr) { //previous³ëµå ´ÙÀ½ÀÇ ³ëµå¸¦ »èÁ¦ÇÏ´Â ÇÔ¼öÀÌ´Ù.
+	void list_remove(Node* previous_ptr) { //previousë…¸ë“œ ë‹¤ìŒì˜ ë…¸ë“œë¥¼ ì‚­ì œí•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
 	};
-	void list_clear(Node* head_ptr) { //¸ğµç ³ëµå¸¦ Á¦°ÅÇØÁÖ´Â ÇÔ¼ö.
+	void list_clear(Node* head_ptr) { //ëª¨ë“  ë…¸ë“œë¥¼ ì œê±°í•´ì£¼ëŠ” í•¨ìˆ˜.
 	};
-	void list_copy(Node* source_ptr, Node*& head_ptr, Node*& tail_ptr) { //¸®½ºÆ®¸¦ º¹»çÇÏ´Â ÇÔ¼öÀÌ´Ù. ¼Ò½ººÎºĞ ºÎÅÍ º¹»ç¸¦ ½ÃÀÛÇÑ´Ù. Çìµå,Å×ÀÏ Æ÷ÀÎÅÍ´Â ³ëµåÀÇ Ã³À½°ú ¸¶Áö¸·À» °¡¸®Å²´Ù.
+	void list_copy(Node* source_ptr, Node*& head_ptr, Node*& tail_ptr) { //ë¦¬ìŠ¤íŠ¸ë¥¼ ë³µì‚¬í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤. ì†ŒìŠ¤ë¶€ë¶„ ë¶€í„° ë³µì‚¬ë¥¼ ì‹œì‘í•œë‹¤. í—¤ë“œ,í…Œì¼ í¬ì¸í„°ëŠ” ë…¸ë“œì˜ ì²˜ìŒê³¼ ë§ˆì§€ë§‰ì„ ê°€ë¦¬í‚¨ë‹¤.
+	};
+	Node* get_new_node(int x) {
 	};
 };
-size_type list_length(Node* head_ptr) { //³ëµå °³¼ö¸¦ ¸®ÅÏÇØÁÖ´Â ÇÔ¼ö.
-	size_t answer = 0; // ¸®ÅÏÇÒ °³¼ö¸¦ ÀúÀåÇÏ´Â º¯¼ö.
-	Node* cursor; //Çìµå Æ÷ÀÎÅÍ¸¦ °¡¸®Å°°í °è¼Ó ¸µÅ©¸¦ µû¶ó°¥ Æ÷ÀÎÅÍ ¼±¾ğ.
-	for (cursor = head_ptr; cursor != NULL; cursor = cursor->link_next()) //for(ÃÊ±â:Ä¿¼­¸¦ ÇìµåÆ÷ÀÎÅÍ·ÎÀâ¾ÆÁØ´Ù; Á¾°áÁ¶°Ç: Ä¿¼­°¡ ´õÀÌ»ó °¡¸®Å°´Â°Ô¾øÀ»¶§±îÁö. NULLÆ÷ÀÎÅÍ; Áõ°¨½Ä:Ä¿¼­´Â ´ÙÀ½¸µÅ©¸¦ µû¶ó°£´Ù.)
-		++answer; //Ä¿¼­°¡ ÇÑ°³¾¿ ¿Å°ÜÁú¶§¸¶´Ù answer¸¦ ÇÑ°³¾¿ ¿Ã·ÁÁØ´Ù.
-	return answer; //lengthÇÔ¼ö´Â °á±¹ node°³¼ö ¸®ÅÏ.
+
+Node* get_new_node(int x) {
+	Node* new_node = (Node*)malloc(sizeof(Node));
+	new_node->data = x;
+	new_node->prev_ptr = NULL;
+	new_node->next_ptr = NULL;
+	return new_node;
 };
-Node* list_search(Node* head_ptr, int& target) { //target°ªÀ» ÁÖ¸é ±×°ª¿¡ ¸Â´Â Æ÷ÀÎÅÍÀÇ ÁÖ¼Ò¸¦ ¸®ÅÏÇØÁØ´Ù.
-	Node* cursor; //¸®½ºÆ®¸¦ Ã£¾ÆÁÙ Ä¿¼­ Æ÷ÀÎÅÍ¸¦ ¼±¾ğ.
-	for (cursor = head_ptr; cursor != nullptr; cursor->link_next()) {//for(ÃÊ±â:Ä¿¼­¸¦ ÇìµåÆ÷ÀÎÅÍ·ÎÀâ¾ÆÁØ´Ù; Á¾°áÁ¶°Ç: Ä¿¼­°¡ ´õÀÌ»ó °¡¸®Å°´Â°Ô¾øÀ»¶§±îÁö. NULLÆ÷ÀÎÅÍ; Áõ°¨½Ä:Ä¿¼­´Â ´ÙÀ½¸µÅ©¸¦ µû¶ó°£´Ù.)
-		if (target == cursor->data_return()) //targetÀÌ cursorÀÇ data¿Í ÀÏÄ¡½Ã Ä¿¼­ ÁÖ¼Ò ¸®ÅÏ.
+size_type list_length(Node* head_ptr) { //ë…¸ë“œ ê°œìˆ˜ë¥¼ ë¦¬í„´í•´ì£¼ëŠ” í•¨ìˆ˜.
+	size_t answer = 0; // ë¦¬í„´í•  ê°œìˆ˜ë¥¼ ì €ì¥í•˜ëŠ” ë³€ìˆ˜.
+	Node* cursor; //í—¤ë“œ í¬ì¸í„°ë¥¼ ê°€ë¦¬í‚¤ê³  ê³„ì† ë§í¬ë¥¼ ë”°ë¼ê°ˆ í¬ì¸í„° ì„ ì–¸.
+	for (cursor = head_ptr; cursor != NULL; cursor = cursor->link_next()) //for(ì´ˆê¸°:ì»¤ì„œë¥¼ í—¤ë“œí¬ì¸í„°ë¡œì¡ì•„ì¤€ë‹¤; ì¢…ê²°ì¡°ê±´: ì»¤ì„œê°€ ë”ì´ìƒ ê°€ë¦¬í‚¤ëŠ”ê²Œì—†ì„ë•Œê¹Œì§€. NULLí¬ì¸í„°; ì¦ê°ì‹:ì»¤ì„œëŠ” ë‹¤ìŒë§í¬ë¥¼ ë”°ë¼ê°„ë‹¤.)
+		++answer; //ì»¤ì„œê°€ í•œê°œì”© ì˜®ê²¨ì§ˆë•Œë§ˆë‹¤ answerë¥¼ í•œê°œì”© ì˜¬ë ¤ì¤€ë‹¤.
+	return answer; //lengthí•¨ìˆ˜ëŠ” ê²°êµ­ nodeê°œìˆ˜ ë¦¬í„´.
+};
+Node* list_search(Node* head_ptr, int& target) { //targetê°’ì„ ì£¼ë©´ ê·¸ê°’ì— ë§ëŠ” í¬ì¸í„°ì˜ ì£¼ì†Œë¥¼ ë¦¬í„´í•´ì¤€ë‹¤.
+	Node* cursor; //ë¦¬ìŠ¤íŠ¸ë¥¼ ì°¾ì•„ì¤„ ì»¤ì„œ í¬ì¸í„°ë¥¼ ì„ ì–¸.
+	for (cursor = head_ptr; cursor != nullptr; cursor->link_next()) {//for(ì´ˆê¸°:ì»¤ì„œë¥¼ í—¤ë“œí¬ì¸í„°ë¡œì¡ì•„ì¤€ë‹¤; ì¢…ê²°ì¡°ê±´: ì»¤ì„œê°€ ë”ì´ìƒ ê°€ë¦¬í‚¤ëŠ”ê²Œì—†ì„ë•Œê¹Œì§€. NULLí¬ì¸í„°; ì¦ê°ì‹:ì»¤ì„œëŠ” ë‹¤ìŒë§í¬ë¥¼ ë”°ë¼ê°„ë‹¤.)
+		if (target == cursor->data_return()) //targetì´ cursorì˜ dataì™€ ì¼ì¹˜ì‹œ ì»¤ì„œ ì£¼ì†Œ ë¦¬í„´.
 			return cursor;
 	}
-	return NULL;//¸¸¾à for¹®¾È¿¡¼­ ¾È°É¸±½Ã ºó Æ÷ÀÎÅÍ¸¦ ¸®ÅÏ.
+	return NULL;//ë§Œì•½ forë¬¸ì•ˆì—ì„œ ì•ˆê±¸ë¦´ì‹œ ë¹ˆ í¬ì¸í„°ë¥¼ ë¦¬í„´.
 };
-Node* list_locate(Node* head_ptr, size_type& position) //À§Ä¡¸¦ ¾Ë·ÁÁÖ¸é ÇØ´ç À§Ä¡ÀÇ Æ÷ÀÎÅÍÀÇ ÁÖ¼Ò(ÀÎµ¦½º)¸¦ ¸®ÅÏÇØÁÖ´Â ÇÔ¼ö.
+Node* list_locate(Node* head_ptr, size_type& position) //ìœ„ì¹˜ë¥¼ ì•Œë ¤ì£¼ë©´ í•´ë‹¹ ìœ„ì¹˜ì˜ í¬ì¸í„°ì˜ ì£¼ì†Œ(ì¸ë±ìŠ¤)ë¥¼ ë¦¬í„´í•´ì£¼ëŠ” í•¨ìˆ˜.
 {
-	Node* cursor = head_ptr; //»õ·Î¿î Ä¿¼­ ¼±¾ğÈÄ ÇìµåÆ÷ÀÎÅÍ·Î ÃÊ±âÈ­
-	size_type i; //¼­Ä¡¿ë ¾çÀÇÁ¤¼ö i¼±¾ğ.
-	for (i = 1; (cursor != NULL && i < position); i++) //for(ÃÊ±â: i=1. Á¾°áÁ¶°Ç: Ä¿¼­°¡ NULLÀÌ¾Æ´Ò¶§. Áï tail_ptrÀÌ ¾Æ´Ò¶§±îÁö and i°¡ Ã£´Â À§Ä¡
-		cursor = cursor->link_next(); //Ä¿¼­¸¦ ´ÙÀ½ ³ëµå·Î ¿Å±ä´Ù.
+	Node* cursor = head_ptr; //ìƒˆë¡œìš´ ì»¤ì„œ ì„ ì–¸í›„ í—¤ë“œí¬ì¸í„°ë¡œ ì´ˆê¸°í™”
+	size_type i; //ì„œì¹˜ìš© ì–‘ì˜ì •ìˆ˜ iì„ ì–¸.
+	for (i = 1; (cursor != NULL && i < position); i++) //for(ì´ˆê¸°: i=1. ì¢…ê²°ì¡°ê±´: ì»¤ì„œê°€ NULLì´ì•„ë‹ë•Œ. ì¦‰ tail_ptrì´ ì•„ë‹ë•Œê¹Œì§€ and iê°€ ì°¾ëŠ” ìœ„ì¹˜
+		cursor = cursor->link_next(); //ì»¤ì„œë¥¼ ë‹¤ìŒ ë…¸ë“œë¡œ ì˜®ê¸´ë‹¤.
 	return cursor;
 };
 
-void list_head_insert(Node* head_ptr,int& entry) { //headºÎºĞ¿¡ »õ·Î ³ëµå¸¦ »ğÀÔ ÇØÁÖ´Â ÇÔ¼öÀÌ´Ù.
-	Node* new_node=new Node(entry);    //»õ·Î¿î ³ëµå¸¦ ¸¸µç´Ù.
-	new_node->next_ptr = head_ptr->next_ptr; //»õ·Î¿î ³ëµå°¡ °¡¸®Å°´Â°÷Àº ÇìµåÆ÷ÀÎÅÍ°¡ °¡¸®Å°´Â °÷ÀÌ´Ù.
-	new_node->prev_ptr = NULL; //»õ·Î¿î ³ëµåÀÇ ÀÌÀüÀÌ °¡¸®Å°´Â°÷Àº ¾ø´Ù.
-	head_ptr->next_ptr = new_node;		//ÇìµåÆ÷ÀÎÅÍ´Â »õ·Î¿î ¸¸µé¾îÁø ³ëµå¸¦  °¡¸®Å²´Ù.
-	head_ptr->prev_ptr = NULL;          //ÇìµåÆ÷ÀÎÅÍÀÇ ÀÌÀüÀÌ °¡¸®Å°´Â°÷Àº ¾ø´Ù.
-	index++; //³ëµå°¡ ´Ã¾úÀ¸¹Ç·Î Ä«¿îÆ®¸¦ 1¿Ã¸°´Ù.
+void list_head_insert(Node* head_ptr, int& entry) { //headë¶€ë¶„ì— ìƒˆë¡œ ë…¸ë“œë¥¼ ì‚½ì… í•´ì£¼ëŠ” í•¨ìˆ˜ì´ë‹¤.
+	Node* new_node = get_new_node(entry);   //ìƒˆë¡œìš´ ë…¸ë“œë¥¼ ë§Œë“ ë‹¤.
+	if (head_ptr == NULL) {
+		head_ptr = new_node;
+		return;
+	}
+	head_ptr->prev_ptr = new_node; //í—¤ë“œì˜ ì´ì „ì€ ìƒˆ ë…¸ë“œë¥¼ê°€ë¦¬í‚¨ë‹¤.
+	new_node->next_ptr = head_ptr; //ìƒˆë¡œìš´ ë…¸ë“œê°€ ê°€ë¦¬í‚¤ëŠ”ê³³ì€ í—¤ë“œí¬ì¸í„°ê°€ ê°€ë¦¬í‚¤ëŠ” ê³³ì´ë‹¤.
+	head_ptr = new_node; //í—¤ë“œê°€ ê°€ë¦¬í‚¤ëŠ”ê³³ì€ ìƒˆ ë…¸ë“œì´ë‹¤.
+	index++; //ë…¸ë“œê°€ ëŠ˜ì—ˆìœ¼ë¯€ë¡œ ì¹´ìš´íŠ¸ë¥¼ 1ì˜¬ë¦°ë‹¤.
 };
 
-void list_insert(Node* before, int& insert) { //head°¡ ¾Æ´Ñ ºÎºĞ¿¡ »õ·Î¿î ³ëµå»ğÀÔ ÇÔ¼öÀÌ´Ù. before ³ëµå µÚ¿¡ »ğÀÔÇÒ °ÍÀÌ´Ù. ¸Å°³º¯¼ö·Î ³ëµå¿Í µ¥ÀÌÅÍ°¡ ÇÊ¿äÇÏ´Ù. ¸®ÅÏÇü½ÄÀº ¾ø´Ù.
-	Node* new_node = new Node(); //»õ·Î¿î ³ëµå¸¦ ¸¸µç´Ù.
-	new_node->data = insert; //»õ·Î¿î ³ëµå¿¡ µ¥ÀÌÅÍ¸¦ »ğÀÔÇÑ´Ù.
-	if (index==1) //¸¸¾à ÀÎµ¦½º°¡ 1ÀÌ°Å³ª head_ptrÀÌ 1ÀÌ¸é head_insertÇÔ¼ö·Î ³Ñ±ä´Ù.
+void list_insert(Node* before, int& insert) { //headê°€ ì•„ë‹Œ ë¶€ë¶„ì— ìƒˆë¡œìš´ ë…¸ë“œì‚½ì… í•¨ìˆ˜ì´ë‹¤. before ë…¸ë“œ ë’¤ì— ì‚½ì…í•  ê²ƒì´ë‹¤. ë§¤ê°œë³€ìˆ˜ë¡œ ë…¸ë“œì™€ ë°ì´í„°ê°€ í•„ìš”í•˜ë‹¤. ë¦¬í„´í˜•ì‹ì€ ì—†ë‹¤.
+	Node* new_node = new Node(); //ìƒˆë¡œìš´ ë…¸ë“œë¥¼ ë§Œë“ ë‹¤.
+	new_node->data = insert; //ìƒˆë¡œìš´ ë…¸ë“œì— ë°ì´í„°ë¥¼ ì‚½ì…í•œë‹¤.
+	if (index==1) //ë§Œì•½ ì¸ë±ìŠ¤ê°€ 1ì´ê±°ë‚˜ head_ptrì´ 1ì´ë©´ head_insertí•¨ìˆ˜ë¡œ ë„˜ê¸´ë‹¤.
 		list_head_insert(before, insert);
 	else {
-		new_node->next_ptr = before->next_ptr; //new ³ëµå°¡ °¡¸®Å°´Â ´ÙÀ½Æ÷ÀÎÅÍ´Â ÀÌÀü. before °¡ °¡¸®Å°´ø ptrÀÌ´Ù.
-		new_node->prev_ptr = before; //new³ëµå°¡ °¡¸®Å°´Â ÀÌÀü Æ÷ÀÎÅÍ´Â beforeÀÌ´Ù.
-		before->next_ptr->prev_ptr = new_node; //before°¡ °¡¸®Å°´Â ³ëµåÀÇ ÀÌÀü Æ÷ÀÎÅÍ´Â before¸¦ °¡¸®Ä×Áö¸¸. new_node¸¦ ÇâÇÏ°Ô ÇÑ´Ù.
-		before->next_ptr = new_node; //before°¡ °¡¸®Å°´ø°É new_node°¡ °¡¸®Å°°ÔÇÑ´Ù.
-		index++; //³ëµå°¡ ´Ã¾úÀ¸¹Ç·Î Ä«¿îÆ®¸¦ 1¿Ã¸°´Ù.
+		new_node->next_ptr = before->next_ptr; //new ë…¸ë“œê°€ ê°€ë¦¬í‚¤ëŠ” ë‹¤ìŒí¬ì¸í„°ëŠ” ì´ì „. before ê°€ ê°€ë¦¬í‚¤ë˜ ptrì´ë‹¤.
+		new_node->prev_ptr = before; //newë…¸ë“œê°€ ê°€ë¦¬í‚¤ëŠ” ì´ì „ í¬ì¸í„°ëŠ” beforeì´ë‹¤.
+		before->next_ptr->prev_ptr = new_node; //beforeê°€ ê°€ë¦¬í‚¤ëŠ” ë…¸ë“œì˜ ì´ì „ í¬ì¸í„°ëŠ” beforeë¥¼ ê°€ë¦¬ì¼°ì§€ë§Œ. new_nodeë¥¼ í–¥í•˜ê²Œ í•œë‹¤.
+		before->next_ptr = new_node; //beforeê°€ ê°€ë¦¬í‚¤ë˜ê±¸ new_nodeê°€ ê°€ë¦¬í‚¤ê²Œí•œë‹¤.
+		index++; //ë…¸ë“œê°€ ëŠ˜ì—ˆìœ¼ë¯€ë¡œ ì¹´ìš´íŠ¸ë¥¼ 1ì˜¬ë¦°ë‹¤.
 	}
 };
 
 
-void list_head_remove(Node*& head_ptr) { //Ã¹¹øÂ° ³ëµå¸¦ Áö¿öÁÖ´Â ÇÔ¼ö.
+void list_head_remove(Node*& head_ptr) { //ì²«ë²ˆì§¸ ë…¸ë“œë¥¼ ì§€ì›Œì£¼ëŠ” í•¨ìˆ˜.
 	Node* remove_ptr;
-	remove_ptr = head_ptr; //remove_ptr°¡ Ã¹¹øÂ° ³ëµå°¡µÊ.
-	head_ptr = head_ptr->next_ptr; //ÇìµåÆ÷ÀÎÅÍ°¡ µÎ¹øÂ° ³ëµå¸¦ °¡¸®Å°µµ·ÏÇÔ.
-	head_ptr->prev_ptr = NULL; //ÇìµåÆ÷ÀÎÅÍ°¡ ÀÌÀü¿¡ °¡¸®Å°´Â°Ç ¾ø´Ù.
-	delete remove_ptr; //remove_ptr¸¦ ÇØÁ¦ ½ÃÅ²´Ù.
+	remove_ptr = head_ptr; //remove_ptrê°€ ì²«ë²ˆì§¸ ë…¸ë“œê°€ë¨.
+	head_ptr = head_ptr->next_ptr; //í—¤ë“œí¬ì¸í„°ê°€ ë‘ë²ˆì§¸ ë…¸ë“œë¥¼ ê°€ë¦¬í‚¤ë„ë¡í•¨.
+	head_ptr->prev_ptr = NULL; //í—¤ë“œí¬ì¸í„°ê°€ ì´ì „ì— ê°€ë¦¬í‚¤ëŠ”ê±´ ì—†ë‹¤.
+	delete remove_ptr; //remove_ptrë¥¼ í•´ì œ ì‹œí‚¨ë‹¤.
 };
-void list_remove(Node* previous_ptr) { //previous³ëµå ´ÙÀ½ÀÇ ³ëµå¸¦ »èÁ¦ÇÏ´Â ÇÔ¼öÀÌ´Ù.
-	Node* remove_ptr; //Á¦°ÅÇÒ ³ëµå¿Í °°°Ô¸ÂÃâ ³ëµå »ı¼º.
-	remove_ptr = previous_ptr->link_next();  //Á¦°ÅÇÒ ³ëµå(previous´ÙÀ½)¸¦ ¼³Á¤ÇÑ´Ù.
-	previous_ptr->next_ptr = remove_ptr->next_ptr;  //ÀÌÀü ³ëµåÀÇ ´ÙÀ½ Æ÷ÀÎÅÍ´Â removeÇÒ ³ëµå°¡ °¡¸®Å°´Â Æ÷ÀÎÅÍÀÌ´Ù.
-	remove_ptr->link_next(); //Á¦°ÅÇÒ ³ëµå¸¦ ´ÙÀ½ ³ëµå·Î ¿Å±ä´Ù.
-	remove_ptr->prev_ptr = previous_ptr; //remove_ptrÀº ÀÌÁ¦ previousÀÇ ´Ù´ÙÀ½ ³ëµåÀÌ´Ù. ±× »óÅÂ¿¡¼­ prevÆ÷ÀÎÅÍ¸¦ previous¸¦ ÇâÇÏ°ÔÇÑ´Ù.
-	delete remove_ptr; //remove Á¦°Å.
+void list_remove(Node* previous_ptr) { //previousë…¸ë“œ ë‹¤ìŒì˜ ë…¸ë“œë¥¼ ì‚­ì œí•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
+	Node* remove_ptr; //ì œê±°í•  ë…¸ë“œì™€ ê°™ê²Œë§ì¶œ ë…¸ë“œ ìƒì„±.
+	remove_ptr = previous_ptr->link_next();  //ì œê±°í•  ë…¸ë“œ(previousë‹¤ìŒ)ë¥¼ ì„¤ì •í•œë‹¤.
+	previous_ptr->next_ptr = remove_ptr->next_ptr;  //ì´ì „ ë…¸ë“œì˜ ë‹¤ìŒ í¬ì¸í„°ëŠ” removeí•  ë…¸ë“œê°€ ê°€ë¦¬í‚¤ëŠ” í¬ì¸í„°ì´ë‹¤.
+	remove_ptr->link_next(); //ì œê±°í•  ë…¸ë“œë¥¼ ë‹¤ìŒ ë…¸ë“œë¡œ ì˜®ê¸´ë‹¤.
+	remove_ptr->prev_ptr = previous_ptr; //remove_ptrì€ ì´ì œ previousì˜ ë‹¤ë‹¤ìŒ ë…¸ë“œì´ë‹¤. ê·¸ ìƒíƒœì—ì„œ preví¬ì¸í„°ë¥¼ previousë¥¼ í–¥í•˜ê²Œí•œë‹¤.
+	delete remove_ptr; //remove ì œê±°.
 };
-void list_clear(Node* head_ptr) { //¸ğµç ³ëµå¸¦ Á¦°ÅÇØÁÖ´Â ÇÔ¼ö.
-	while (head_ptr != NULL) { //head_ptrÀÌ NULLÀÌ ¾Æ´Ò¶§±îÁö ¹İº¹.
-		list_head_remove(head_ptr);//head_ptrÀ» Á¦°ÅÇÏ´Â ÇÔ¼ö¸¦ ÇÑ´Ù.
+void list_clear(Node* head_ptr) { //ëª¨ë“  ë…¸ë“œë¥¼ ì œê±°í•´ì£¼ëŠ” í•¨ìˆ˜.
+	while (head_ptr != NULL) { //head_ptrì´ NULLì´ ì•„ë‹ë•Œê¹Œì§€ ë°˜ë³µ.
+		list_head_remove(head_ptr);//head_ptrì„ ì œê±°í•˜ëŠ” í•¨ìˆ˜ë¥¼ í•œë‹¤.
 	}
 };
-void list_copy(Node* source_ptr, Node*& head_ptr, Node*& tail_ptr) { //¸®½ºÆ®¸¦ º¹»çÇÏ´Â ÇÔ¼öÀÌ´Ù. ¼Ò½ººÎºĞ ºÎÅÍ º¹»ç¸¦ ½ÃÀÛÇÑ´Ù. Çìµå,Å×ÀÏ Æ÷ÀÎÅÍ´Â ³ëµåÀÇ Ã³À½°ú ¸¶Áö¸·À» °¡¸®Å²´Ù.
+void list_copy(Node* source_ptr, Node*& head_ptr, Node*& tail_ptr) { //ë¦¬ìŠ¤íŠ¸ë¥¼ ë³µì‚¬í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤. ì†ŒìŠ¤ë¶€ë¶„ ë¶€í„° ë³µì‚¬ë¥¼ ì‹œì‘í•œë‹¤. í—¤ë“œ,í…Œì¼ í¬ì¸í„°ëŠ” ë…¸ë“œì˜ ì²˜ìŒê³¼ ë§ˆì§€ë§‰ì„ ê°€ë¦¬í‚¨ë‹¤.
 	head_ptr = NULL;
 	tail_ptr = NULL;
-	if (source_ptr == NULL)   //Ã³À½ÀÌ NULLÀÏ½Ã º¹»çÇÒ°ÍÀÌ ¾øÀ¸¹Ç·Î Á¾·á.
+	if (source_ptr == NULL)   //ì²˜ìŒì´ NULLì¼ì‹œ ë³µì‚¬í• ê²ƒì´ ì—†ìœ¼ë¯€ë¡œ ì¢…ë£Œ.
 		return;
 
-	list_head_insert(head_ptr, source_ptr->data); //Ã¹ ³ëµå »ı¼º.
-	tail_ptr = head_ptr;  //³ëµå°¡ÇÑ°³»ÓÀÌ¹Ç·Î ÇìµåÆ÷ÀÎÅÍ¿Í Å×ÀÏÆ÷ÀÎÅÍ´Â Ã¹ ³ëµå¸¦ °¡¸®Å²´Ù.
-	source_ptr = source_ptr->link_next(); //¼Ò½ºÆ÷ÀÎÅÍ¸¦ ´ÙÀ½À¸·Î ³Ñ±ä´Ù.
+	list_head_insert(head_ptr, source_ptr->data); //ì²« ë…¸ë“œ ìƒì„±.
+	tail_ptr = head_ptr;  //ë…¸ë“œê°€í•œê°œë¿ì´ë¯€ë¡œ í—¤ë“œí¬ì¸í„°ì™€ í…Œì¼í¬ì¸í„°ëŠ” ì²« ë…¸ë“œë¥¼ ê°€ë¦¬í‚¨ë‹¤.
+	source_ptr = source_ptr->link_next(); //ì†ŒìŠ¤í¬ì¸í„°ë¥¼ ë‹¤ìŒìœ¼ë¡œ ë„˜ê¸´ë‹¤.
 	while (source_ptr != NULL) {
 		list_insert(tail_ptr, source_ptr->data);
 		tail_ptr = tail_ptr->link_next();
@@ -157,35 +170,35 @@ class Bag {
 		Node* head_ptr;
 		size_type many_nodes;
 	public:
-		Bag() { // ¸Å°³º¯¼ö°¡ ¾øÀ» ¶§ ±âº» »ı¼ºÀÚ.
-			head_ptr = NULL; // NULL·Î ÃÊ±âÈ­ÇØÁØ´Ù.
-			many_nodes = 0; //0À¸·Î ÃÊ±âÈ­ÇØÁØ´Ù.
+		Bag() { // ë§¤ê°œë³€ìˆ˜ê°€ ì—†ì„ ë•Œ ê¸°ë³¸ ìƒì„±ì.
+			head_ptr = NULL; // NULLë¡œ ì´ˆê¸°í™”í•´ì¤€ë‹¤.
+			many_nodes = 0; //0ìœ¼ë¡œ ì´ˆê¸°í™”í•´ì¤€ë‹¤.
 		};
-		Bag(const Bag& source) { // ±âº»ÀÇ bagÀ» copyÇØ¼­ »õ·Î¿î bagÀ»¸¸µé¶§ »ç¿ëµÇ´Â »ı¼ºÀÚ. copy constructor
-			Node* tail_ptr; //¸Å°³º¯¼ö¿¡ ³Ö±âÀ§ÇØ ¼±¾ğÇÑ´Ù.
-			list_copy(source.head_ptr, head_ptr, tail_ptr); //list_copyÇÔ¼ö¸¦ ½ÇÇàÇÑ´Ù.
-			many_nodes = source.many_nodes; //³ëµåÀÇ ¼ö´Â source³ëµåÀÇ ³ëµåÀÇ¼ö·Î ¸ÂÃçÁØ´Ù.
+		Bag(const Bag& source) { // ê¸°ë³¸ì˜ bagì„ copyí•´ì„œ ìƒˆë¡œìš´ bagì„ë§Œë“¤ë•Œ ì‚¬ìš©ë˜ëŠ” ìƒì„±ì. copy constructor
+			Node* tail_ptr; //ë§¤ê°œë³€ìˆ˜ì— ë„£ê¸°ìœ„í•´ ì„ ì–¸í•œë‹¤.
+			list_copy(source.head_ptr, head_ptr, tail_ptr); //list_copyí•¨ìˆ˜ë¥¼ ì‹¤í–‰í•œë‹¤.
+			many_nodes = source.many_nodes; //ë…¸ë“œì˜ ìˆ˜ëŠ” sourceë…¸ë“œì˜ ë…¸ë“œì˜ìˆ˜ë¡œ ë§ì¶°ì¤€ë‹¤.
 		};
-		~Bag() { //¼Ò¸êÀÚÀÌ´Ù. 
-			list_clear(head_ptr); //list_clearÇÔ¼ö¸¦ ÀÌ¿ëÇÏ¿© ¸ğµç ³ëµå¸¦ Á¦°ÅÇÑ´Ù.
-			many_nodes = 0; //³ëµå°¡¾ø¾îÁ³À¸´Ï ³ëµåÀÇ ¼ö´Â 0ÀÌµÈ´Ù.
+		~Bag() { //ì†Œë©¸ìì´ë‹¤. 
+			list_clear(head_ptr); //list_clearí•¨ìˆ˜ë¥¼ ì´ìš©í•˜ì—¬ ëª¨ë“  ë…¸ë“œë¥¼ ì œê±°í•œë‹¤.
+			many_nodes = 0; //ë…¸ë“œê°€ì—†ì–´ì¡Œìœ¼ë‹ˆ ë…¸ë“œì˜ ìˆ˜ëŠ” 0ì´ëœë‹¤.
 		};
-		void insert(int entry) {  //Bag¾È¿¡ ÀÚ·á¸¦ ³Ö¾îÁÖ´Â ÇÔ¼ö,
-				list_head_insert(head_ptr, entry); //À§Ä¡°¡»ó°ü¾øÀ¸¹Ç·Î ÇìµåinsertÇÔ¼ö¸¦ È£ÃâÇØ¼­ µ¥ÀÌÅÍ¸¦ ³Ö´Â´Ù.
-				++many_nodes; //³ëµå¼ö°¡ 1´Ã¾úÀ¸¹Ç·Î 1¿Ã·ÁÁØ´Ù.
+		void insert(int entry) {  //Bagì•ˆì— ìë£Œë¥¼ ë„£ì–´ì£¼ëŠ” í•¨ìˆ˜,
+				list_head_insert(head_ptr, entry); //ìœ„ì¹˜ê°€ìƒê´€ì—†ìœ¼ë¯€ë¡œ í—¤ë“œinsertí•¨ìˆ˜ë¥¼ í˜¸ì¶œí•´ì„œ ë°ì´í„°ë¥¼ ë„£ëŠ”ë‹¤.
+				++many_nodes; //ë…¸ë“œìˆ˜ê°€ 1ëŠ˜ì—ˆìœ¼ë¯€ë¡œ 1ì˜¬ë ¤ì¤€ë‹¤.
 		};
-		bool erase_one(int target) { //Bag¾È target¿¡ ¸Â´Â µ¥ÀÌÅÍ¸¦ ¾ø¾ÖÁÖ´Â ÇÔ¼ö. 
+		bool erase_one(int target) { //Bagì•ˆ targetì— ë§ëŠ” ë°ì´í„°ë¥¼ ì—†ì• ì£¼ëŠ” í•¨ìˆ˜. 
 				Node* target_ptr;
-				Doubly_Linked_List apply;  //ÇÔ¼ö Àû¿ëÀ» À§ÇØ °´Ã¼¸¦ ÇÏ³ª»ı¼ºÇÑ´Ù.
-				target_ptr = list_search(head_ptr, target); //Å¸°ÙÀÇ Æ÷ÀÎÅÍ¸¦ Ã£´Â´Ù.
-				if (target_ptr == NULL) //Å¸°ÙÀÌ ºñ¾ú´Ù¸é ½ÇÆĞ.
+				Doubly_Linked_List apply;  //í•¨ìˆ˜ ì ìš©ì„ ìœ„í•´ ê°ì²´ë¥¼ í•˜ë‚˜ìƒì„±í•œë‹¤.
+				target_ptr = list_search(head_ptr, target); //íƒ€ê²Ÿì˜ í¬ì¸í„°ë¥¼ ì°¾ëŠ”ë‹¤.
+				if (target_ptr == NULL) //íƒ€ê²Ÿì´ ë¹„ì—ˆë‹¤ë©´ ì‹¤íŒ¨.
 					false;
-				target_ptr->data = head_ptr->data; //ÇìµåÀÇ µ¥ÀÌÅÍ¸¦  Å¸°Ù³ëµå¿¡ µ¥ÀÌÅÍ¸¦ ³Ö´Â´Ù.
-				list_head_remove(head_ptr); //Çìµå¸¦ Áö¿î´Ù.
-				--many_nodes;  //³ëµå¼ö°¡ ÇÏ³ªÁÙ¾úÀ¸¹Ç·Î 1³»¸°´Ù.
+				target_ptr->data = head_ptr->data; //í—¤ë“œì˜ ë°ì´í„°ë¥¼  íƒ€ê²Ÿë…¸ë“œì— ë°ì´í„°ë¥¼ ë„£ëŠ”ë‹¤.
+				list_head_remove(head_ptr); //í—¤ë“œë¥¼ ì§€ìš´ë‹¤.
+				--many_nodes;  //ë…¸ë“œìˆ˜ê°€ í•˜ë‚˜ì¤„ì—ˆìœ¼ë¯€ë¡œ 1ë‚´ë¦°ë‹¤.
 				return true;
 		};
-		size_type count(int target) { //targetÀÌ ¸î°³ÀÎÁö ¾Ë·ÁÁÖ´Â ÇÔ¼ö.
+		size_type count(int target) { //targetì´ ëª‡ê°œì¸ì§€ ì•Œë ¤ì£¼ëŠ” í•¨ìˆ˜.
 				size_t answer = 0;
 				Node* cursor;
 				cursor = list_search(head_ptr, target);
@@ -196,70 +209,67 @@ class Bag {
 				}
 				return answer;
 		};
-		friend Bag operator+(Bag & addend1, Bag & addend2) { // °¡¹æ 1°ú °¡¹æ2¸¦ ÇÕÄ¡´Â ¿¬»êÀÚ. 
-				Bag sum; //¸®ÅÏÇÒ bag¼±¾ğ
-				sum += addend1;  //sum¿¡ ¸Å°³º¯¼ö1°¡¹æÀ» ÇÕÄ£´Ù.
-				sum += addend2; //sum¿¡ ¸Å°³º¯¼ö2 °¡¹æÀ»ÇÕÄ£´Ù.
-				return sum; //¸Å°³º¯¼ö1,2 °¡ÇÕÃÄÁø °¡¹æÀ» ¸®ÅÏÇÑ´Ù.
+		friend Bag operator+(Bag & addend1, Bag & addend2) { // ê°€ë°© 1ê³¼ ê°€ë°©2ë¥¼ í•©ì¹˜ëŠ” ì—°ì‚°ì. 
+				Bag sum; //ë¦¬í„´í•  bagì„ ì–¸
+				sum += addend1;  //sumì— ë§¤ê°œë³€ìˆ˜1ê°€ë°©ì„ í•©ì¹œë‹¤.
+				sum += addend2; //sumì— ë§¤ê°œë³€ìˆ˜2 ê°€ë°©ì„í•©ì¹œë‹¤.
+				return sum; //ë§¤ê°œë³€ìˆ˜1,2 ê°€í•©ì³ì§„ ê°€ë°©ì„ ë¦¬í„´í•œë‹¤.
 		};
-		void operator+=(const Bag & addend) { //°¡¹æ¿¡ ¿¬»êÀÚ·Î+= ÀÏ½Ã ±âÁ¸¿¡°Íµé¿¡ ÀÎÀÚ·Î µé¾î¿Â °¡¹æÀ» ÇÕÃÄÁÖ´Â ÇÔ¼ö.
+		void operator+=(const Bag & addend) { //ê°€ë°©ì— ì—°ì‚°ìë¡œ+= ì¼ì‹œ ê¸°ì¡´ì—ê²ƒë“¤ì— ì¸ìë¡œ ë“¤ì–´ì˜¨ ê°€ë°©ì„ í•©ì³ì£¼ëŠ” í•¨ìˆ˜.
 				Node* copy_tail_ptr;
 				Node* copy_head_ptr;
 
 				if (addend.many_nodes > 0)
 				{
-					list_copy(addend.head_ptr, copy_head_ptr, copy_tail_ptr); //ÇÔ¼ö¸¦ º¹»çÇÑ´Ù. ¸Å°³º¯¼ö·Î µé¾î¿Â ³ëµåÀÇ ÇìµåºÎÅÍ.
-					copy_tail_ptr->next_ptr = head_ptr->next_ptr; //º¹»çµÈ ²¿¸®Æ÷ÀÎÅÍ°¡ °¡¸®Å°´Â ´ÙÀ½Àº ÇìµåÆ÷ÀÎÅÍÀÇ ´ÙÀ½ÀÌ´Ù.
+					list_copy(addend.head_ptr, copy_head_ptr, copy_tail_ptr); //í•¨ìˆ˜ë¥¼ ë³µì‚¬í•œë‹¤. ë§¤ê°œë³€ìˆ˜ë¡œ ë“¤ì–´ì˜¨ ë…¸ë“œì˜ í—¤ë“œë¶€í„°.
+					copy_tail_ptr->next_ptr = head_ptr->next_ptr; //ë³µì‚¬ëœ ê¼¬ë¦¬í¬ì¸í„°ê°€ ê°€ë¦¬í‚¤ëŠ” ë‹¤ìŒì€ í—¤ë“œí¬ì¸í„°ì˜ ë‹¤ìŒì´ë‹¤.
 					head_ptr = copy_head_ptr;
 					many_nodes += addend.many_nodes;
 				}
 		};
-		void operator=(const Bag & source) { //µÎ °¡¹æÀ» °°°Ô ÇØÁÖ´Â ÇÔ¼ö. ÀÎÀÚ·Îµé¾î¿À´Â °¡¹æ°ú °°°Ô ÇØÁØ´Ù.
+		void operator=(const Bag & source) { //ë‘ ê°€ë°©ì„ ê°™ê²Œ í•´ì£¼ëŠ” í•¨ìˆ˜. ì¸ìë¡œë“¤ì–´ì˜¤ëŠ” ê°€ë°©ê³¼ ê°™ê²Œ í•´ì¤€ë‹¤.
 				Node* tail_ptr;
 
-				if (this == &source) // ÀÚ±âÇÒ´ç. ½º½º·Î¸¦ º¹»çÇÏ·Á´Â °ÇÁö Ã¼Å©ÇÑ´Ù.
-					return; //½º½º·Î ÀÏ½Ã ÇÔ¼ö Á¾·á.
-				list_clear(head_ptr); //¸ğµç ³ëµå¸¦ Áö¿î´Ù.
-				list_copy(source.head_ptr, head_ptr, tail_ptr); //sourceÀÇ ³ëµå¸¦ º¹»çÇÑ´Ù.
-				many_nodes = source.many_nodes; //³ëµåÀÇ ¼ö´Â sourceÀÇ ³ëµå ¼ö ÀÌ´Ù
+				if (this == &source) // ìê¸°í• ë‹¹. ìŠ¤ìŠ¤ë¡œë¥¼ ë³µì‚¬í•˜ë ¤ëŠ” ê±´ì§€ ì²´í¬í•œë‹¤.
+					return; //ìŠ¤ìŠ¤ë¡œ ì¼ì‹œ í•¨ìˆ˜ ì¢…ë£Œ.
+				list_clear(head_ptr); //ëª¨ë“  ë…¸ë“œë¥¼ ì§€ìš´ë‹¤.
+				list_copy(source.head_ptr, head_ptr, tail_ptr); //sourceì˜ ë…¸ë“œë¥¼ ë³µì‚¬í•œë‹¤.
+				many_nodes = source.many_nodes; //ë…¸ë“œì˜ ìˆ˜ëŠ” sourceì˜ ë…¸ë“œ ìˆ˜ ì´ë‹¤
 		};
-		bool operator==(Bag & source) { //==¿¬»êÀÚ. ¸®ÅÏÀ¸·Î Âü,°ÅÁşÀ» ÁØ´Ù.
-				if (this == &source) { // ÀÚ±âÇÒ´ç. ½º½º·Î¸¦ º¹»çÇÏ·Á´Â °ÇÁö Ã¼Å©ÇÑ´Ù.
+		bool operator==(Bag & source) { //==ì—°ì‚°ì. ë¦¬í„´ìœ¼ë¡œ ì°¸,ê±°ì§“ì„ ì¤€ë‹¤.
+				if (this == &source) { // ìê¸°í• ë‹¹. ìŠ¤ìŠ¤ë¡œë¥¼ ë³µì‚¬í•˜ë ¤ëŠ” ê±´ì§€ ì²´í¬í•œë‹¤.
 					return true;
 				}
 				else {
-					head_ptr->link_next(); //ÇìµåÆ÷ÀÎÅÍ¸¦ ´ÙÀ½Æ÷ÀÎÅÍ·Î ÀÌµ¿½ÃÅ²´Ù.
-					while (head_ptr != NULL) { //head°¡ NULL ¾Æ´Ò¶§±îÁö ´ÙÀ½ Æ÷ÀÎÅÍ·Î ÀÌµ¿ÇÑ´Ù.
-						head_ptr->data_return() != source.head_ptr->data_return(); //ÇìµåÆ÷ÀÎÅÍ°¡ °¡¸®Å°´Â³ëµåÀÇ µ¥ÀÌÅÍ°¡ ¿¬»êÀÚ·Î µé¾î¿À´Â °¡¹æÀÇ µ¥ÀÌÅÍ¿Í ºÒÀÏÄ¡½Ã °ÅÁşÀÌ´Ù.
+					head_ptr->link_next(); //í—¤ë“œí¬ì¸í„°ë¥¼ ë‹¤ìŒí¬ì¸í„°ë¡œ ì´ë™ì‹œí‚¨ë‹¤.
+					while (head_ptr != NULL) { //headê°€ NULL ì•„ë‹ë•Œê¹Œì§€ ë‹¤ìŒ í¬ì¸í„°ë¡œ ì´ë™í•œë‹¤.
+						head_ptr->data_return() != source.head_ptr->data_return(); //í—¤ë“œí¬ì¸í„°ê°€ ê°€ë¦¬í‚¤ëŠ”ë…¸ë“œì˜ ë°ì´í„°ê°€ ì—°ì‚°ìë¡œ ë“¤ì–´ì˜¤ëŠ” ê°€ë°©ì˜ ë°ì´í„°ì™€ ë¶ˆì¼ì¹˜ì‹œ ê±°ì§“ì´ë‹¤.
 						return false;
-						head_ptr->link_next(); //ÇìµåÆ÷ÀÎÅÍ¸¦ ´ÙÀ½ ³ëµå·Î ¿Å±ä´Ù.
+						head_ptr->link_next(); //í—¤ë“œí¬ì¸í„°ë¥¼ ë‹¤ìŒ ë…¸ë“œë¡œ ì˜®ê¸´ë‹¤.
 					}
 					return true;
 				}
 		};
-		bool operator!=(Bag& source) { //°¡¹æ°£ÀÇ !=¿¬»êÀÚ. ´Ş¶ó¾ß true¸¦ ¸®ÅÏÇÑ´Ù. ƒˆÀ»½Ã false¸®ÅÏ. ==¿¬»êÀÚÀÇ ¹İ´ëÀÌ´Ù.
-				if (this == &source) // ÀÚ±âÇÒ´ç. ½º½º·Î¸¦ º¹»çÇÏ·Á´Â °ÇÁö Ã¼Å©ÇÑ´Ù.
+		bool operator!=(Bag& source) { //ê°€ë°©ê°„ì˜ !=ì—°ì‚°ì. ë‹¬ë¼ì•¼ trueë¥¼ ë¦¬í„´í•œë‹¤. ê¹‰ì„ì‹œ falseë¦¬í„´. ==ì—°ì‚°ìì˜ ë°˜ëŒ€ì´ë‹¤.
+				if (this == &source) // ìê¸°í• ë‹¹. ìŠ¤ìŠ¤ë¡œë¥¼ ë³µì‚¬í•˜ë ¤ëŠ” ê±´ì§€ ì²´í¬í•œë‹¤.
 					return false;
 				else {
-					head_ptr->link_next(); //ÇìµåÆ÷ÀÎÅÍ¸¦ ´ÙÀ½Æ÷ÀÎÅÍ·Î ÀÌµ¿½ÃÅ²´Ù.
-					while (head_ptr != NULL) { //head°¡ NULL ¾Æ´Ò¶§±îÁö ´ÙÀ½ Æ÷ÀÎÅÍ·Î ÀÌµ¿ÇÑ´Ù.
-						head_ptr->data_return() != source.head_ptr->data_return(); //ÇìµåÆ÷ÀÎÅÍ°¡ °¡¸®Å°´Â³ëµåÀÇ µ¥ÀÌÅÍ°¡ ¿¬»êÀÚ·Î µé¾î¿À´Â °¡¹æÀÇ µ¥ÀÌÅÍ¿Í ºÒÀÏÄ¡½Ã °ÅÁşÀÌ´Ù.
+					head_ptr->link_next(); //í—¤ë“œí¬ì¸í„°ë¥¼ ë‹¤ìŒí¬ì¸í„°ë¡œ ì´ë™ì‹œí‚¨ë‹¤.
+					while (head_ptr != NULL) { //headê°€ NULL ì•„ë‹ë•Œê¹Œì§€ ë‹¤ìŒ í¬ì¸í„°ë¡œ ì´ë™í•œë‹¤.
+						head_ptr->data_return() != source.head_ptr->data_return(); //í—¤ë“œí¬ì¸í„°ê°€ ê°€ë¦¬í‚¤ëŠ”ë…¸ë“œì˜ ë°ì´í„°ê°€ ì—°ì‚°ìë¡œ ë“¤ì–´ì˜¤ëŠ” ê°€ë°©ì˜ ë°ì´í„°ì™€ ë¶ˆì¼ì¹˜ì‹œ ê±°ì§“ì´ë‹¤.
 						return true;
-						head_ptr->link_next(); //ÇìµåÆ÷ÀÎÅÍ¸¦ ´ÙÀ½ ³ëµå·Î ¿Å±ä´Ù.
+						head_ptr->link_next(); //í—¤ë“œí¬ì¸í„°ë¥¼ ë‹¤ìŒ ë…¸ë“œë¡œ ì˜®ê¸´ë‹¤.
 					}
 					return false;
 				}
 		};
-		void show_contents() {// µ¥ÀÌÅÍ¸¦ º¸¿©ÁÖ´Â ÇÔ¼ö. ÇÔ¼ö(operatorµµ Æ÷ÇÔ) ½ÃÀÛ°ú ³¡¿¡ ³Ö¾îÁà¾ßÇÑ´Ù.
-				/*Node* temp = head_ptr;
-				temp = temp->link_next();
+		void show_contents() {// ë°ì´í„°ë¥¼ ë³´ì—¬ì£¼ëŠ” í•¨ìˆ˜. í•¨ìˆ˜(operatorë„ í¬í•¨) ì‹œì‘ê³¼ ëì— ë„£ì–´ì¤˜ì•¼í•œë‹¤.
+				Node* temp = head_ptr;
 				std::cout << "Bag current:" << " ";
 				while (temp != NULL)
 				{
 					std::cout << temp->data_return() << "  ";
 					temp = temp->link_next();
 				}
-				*/
-			cout << "Bag current :" << " " << endl;
 		};
 };
